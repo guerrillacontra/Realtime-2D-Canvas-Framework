@@ -63,11 +63,11 @@ class App {
     this._interval = 0;
     this.onMouseMoveHandler = (x, y) => {};
     this.onMouseDownHandler = (x, y) => {};
-    this.withYAxisUp = this.withYAxisUp.bind(this);
     this.start = this.start.bind(this);
     this._onMouseEventHandlerWrapper = this._onMouseEventHandlerWrapper.bind(this);
     this._onRequestAnimationFrame = this._onRequestAnimationFrame.bind(this);
   }
+
 
 
   start() {
