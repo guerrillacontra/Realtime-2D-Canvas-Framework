@@ -26,7 +26,11 @@ Example:
 const a = {x:10, y:10};
 const b = {x:10, y:-10};
 const sum = Vector2.add(a,b);
-//sum.x === 20, sum.b === 0;
+const sub = Vector2.sub(a,b);
+const mult = Vector2.mult(a,b);
+const scaled = Vector2.scale(a, 100);//make a 100 times bigger
+const magnitude = Vector2.mag(a);
+const normalized = Vector2.normalized(a);//a normal vector
 ```
 
 Supports normalization, add/sub/mult/div, magnitude etc
