@@ -22,18 +22,20 @@ with no added configuration.
 You can use an immutable 2D vector for common vector based operations.
 
 Example:
-
+```javascript
 const a = {x:10, y:10};
 const b = {x:10, y:-10};
 const sum = Vector2.add(a,b);
 //sum.x === 20, sum.b === 0;
+```
 
 Supports normalization, add/sub/mult/div, magnitude etc
 
 ## Math extensions
-
+```javascript
 //Linear interpolation
 Math.lerp(start, end, %);
+```
 
 ## App scaffolder!
 
@@ -44,6 +46,7 @@ and a wrapper around mouse events.
 
 We can launch an app (normally at the bottom of the code) like this:
 
+```javascript
 const onUpdate = deltaTime =>(){
 };
 
@@ -69,5 +72,5 @@ app.onMouseDown = (x,y)=>{
 app.start();
 
 //magic
-
+```
 
