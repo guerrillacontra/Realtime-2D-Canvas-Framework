@@ -39,6 +39,7 @@ Supports normalization, add/sub/mult/div, magnitude etc
 ```javascript
 //Linear interpolation
 Math.lerp(start, end, %);
+Math.clamp(value, min, max);
 ```
 
 ## App scaffolder!
