@@ -5,7 +5,9 @@ Math.lerp = (first, second, percentage) => {
   return first + (second - first) * percentage;
 };
 
-
+Math.clamp = (value, min, max) => {
+  return value < min ? min : value > max ? max : value;
+};
 
 class Vector2 {
   static zero() {
@@ -64,11 +66,11 @@ class App {
     this.onMouseMoveHandler = (x, y) => {};
     this.onMouseDownHandler = (x, y) => {};
     this.start = this.start.bind(this);
-    this._onMouseEventHandlerWrapper = this._onMouseEventHandlerWrapper.bind(this);
+    this._onMouseEventHandlerWrapper = this._onMouseEventHandlerWrapper.bind(
+      this
+    );
     this._onRequestAnimationFrame = this._onRequestAnimationFrame.bind(this);
   }
-
-
 
   start() {
     this._lastTime = new Date().getTime();
@@ -76,19 +78,26 @@ class App {
     this._deltaTime = 0;
     this._interval = 1000 / this._frameRate;
 
-    this._canvas.addEventListener("mousemove",e=>{
-      this._onMouseEventHandlerWrapper(e, this.onMouseMoveHandler);
-    }, false);
-    
-      this._canvas.addEventListener("mousedown",e=>{
-      this._onMouseEventHandlerWrapper(e, this.onMouseDownHandler);
-    }, false);
-    
+    this._canvas.addEventListener(
+      "mousemove",
+      e => {
+        this._onMouseEventHandlerWrapper(e, this.onMouseMoveHandler);
+      },
+      false
+    );
+
+    this._canvas.addEventListener(
+      "mousedown",
+      e => {
+        this._onMouseEventHandlerWrapper(e, this.onMouseDownHandler);
+      },
+      false
+    );
 
     this._onRequestAnimationFrame();
   }
-  
-  _onMouseEventHandlerWrapper(e, callback){
+
+  _onMouseEventHandlerWrapper(e, callback) {
     let element = this._canvas;
     let offsetX = 0;
     let offsetY = 0;
@@ -113,13 +122,14 @@ class App {
     this._deltaTime = this._currentTime - this._lastTime;
 
     if (this._deltaTime > this._interval) {
+      
       //delta time in seconds
       const dts = this._deltaTime * 0.001;
-
+      
       this._updateHandler(dts);
 
       this._context.clearRect(0, 0, this._canvas.width, this._canvas.height);
-      this._drawHandler(dts);
+      this._drawHandler(this._canvas, this._context, dts);
 
       this._lastTime = this._currentTime - this._deltaTime % this._interval;
     }
